@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_isacii.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohtakra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 01:13:29 by mohtakra          #+#    #+#             */
-/*   Updated: 2022/12/26 18:05:24 by mohtakra         ###   ########.fr       */
+/*   Created: 2022/10/09 14:44:02 by mohtakra          #+#    #+#             */
+/*   Updated: 2022/10/09 14:45:53 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libpushswap.h"
+#include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_isascii(int c)
 {
-	write(fd, &c, 1);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

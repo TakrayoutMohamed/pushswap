@@ -6,11 +6,11 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 01:19:44 by mohtakra          #+#    #+#             */
-/*   Updated: 2022/12/26 18:42:17 by mohtakra         ###   ########.fr       */
+/*   Updated: 2022/10/24 04:04:39 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libpushswap.h"
+#include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {

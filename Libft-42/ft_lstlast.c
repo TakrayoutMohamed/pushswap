@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 01:16:59 by mohtakra          #+#    #+#             */
-/*   Updated: 2022/12/26 18:07:01 by mohtakra         ###   ########.fr       */
+/*   Created: 2022/10/25 05:57:36 by mohtakra          #+#    #+#             */
+/*   Updated: 2022/10/25 23:37:16 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libpushswap.h"
+#include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (s)
-		while (*s)
-			ft_putchar_fd(*s++, fd);
+	if (lst)
+	{
+		while (lst->next)
+			lst = lst->next;
+		return (lst);
+	}
+	return (NULL);
 }

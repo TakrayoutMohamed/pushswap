@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 12:46:00 by mohtakra          #+#    #+#             */
-/*   Updated: 2022/12/26 18:03:57 by mohtakra         ###   ########.fr       */
+/*   Created: 2022/10/09 14:33:59 by mohtakra          #+#    #+#             */
+/*   Updated: 2022/11/01 01:18:27 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libpushswap.h"
+#include "libft.h"
 
-int	ft_isdigit(int c)
+static int	ft_isupper(int c)
 {
-	if (c >= '0' && c <= '9')
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
+}
+
+static int	ft_islower(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	return (0);
+}
+
+int	ft_isalpha(int c)
+{
+	if (ft_isupper(c) || ft_islower(c))
 		return (1);
 	return (0);
 }

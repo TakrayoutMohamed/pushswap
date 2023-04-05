@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libpushswap.h                                      :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 16:11:53 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/05 11:26:10 by takra            ###   ########.fr       */
+/*   Created: 2022/10/25 03:24:16 by mohtakra          #+#    #+#             */
+/*   Updated: 2023/04/05 11:00:07 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPUSHSWAP_H
-#define LIBPUSHSWAP_H
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
-# include "./Libft-42/libft.h"
-	int		check_args(char **str);
-	char	*ft_joinargvs(int argc, char **argv);
-	char	*ft_strtrim_free(char *str, char *set);
-	t_list	*matrix_to_lst(char **matrix);
-	int	lst_duplcate_node(t_list *lst);
-#endif
+#include "libft.h"
+
+t_list	*ft_lstnew(int content)
+{
+	t_list	*p;
+
+	p = (t_list *)malloc(sizeof(t_list));
+	if (!p)
+		return (NULL);
+	p->content = content;
+	p->next = NULL;
+	return (p);
+}
