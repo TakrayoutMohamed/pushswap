@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:12:26 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/05 11:33:19 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/06 17:37:43 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,20 @@ int	main(int argc, char **argv)
 	else
 	{
 		str_argvs = ft_joinargvs(argc, argv);
+		// str_argvs = ft_strdup("8");
 		matrix = ft_split(str_argvs, ' ');
 		lst = matrix_to_lst(matrix);
 		printf("\n ||%s||\n", str_argvs);
 		if (lst_duplcate_node(lst))
 			return (printf("has duplacate values \n"), 0);
+		if (!is_int(matrix, lst))
+			return (printf("thier is number that not int \n"), 0);
 		// print_matrix(matrix);
 		// ft_putendl_fd("\n", 1);
 		print_lst(lst);
 		lst->next->content = 32;
 		print_lst(lst);
-
+		free_matrix(matrix);
 	}
 	return (0);
 }

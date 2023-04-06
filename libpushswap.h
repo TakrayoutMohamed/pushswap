@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:11:53 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/05 11:26:10 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/06 17:33:43 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@
 	char	*ft_joinargvs(int argc, char **argv);
 	char	*ft_strtrim_free(char *str, char *set);
 	t_list	*matrix_to_lst(char **matrix);
-	int	lst_duplcate_node(t_list *lst);
+	int		lst_duplcate_node(t_list *lst);
+	int		is_int(char **matrix, t_list *lst);
+	void	free_matrix(char **matrix);
+
 #endif

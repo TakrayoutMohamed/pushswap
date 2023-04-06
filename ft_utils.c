@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:11:20 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/05 11:31:42 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/06 17:35:00 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,43 @@ static int	ft_is_space(char c)
 	if (c == 32 || (c >= 9 && c <= 13))
 		return (1);
 	return (0);
+}
+
+static int	ft_is_sign(char c)
+{
+	if (c == '-' || c == '+')
+		return (1);
+	return (0);
+}
+
+static int	ft_nbrlen(int nbr)
+{
+	int	len;
+
+	len = 0;
+	if (nbr <= 0)
+	{
+		len++;
+		nbr *= -1;
+	}
+	while (nbr)
+	{
+		nbr /= 10;
+		len++;
+	}
+	return (len);
+}
+
+int	is_int(char **matrix, t_list *lst)
+{
+	while (*matrix && lst)
+	{
+		if ((int)ft_strlen(*matrix) != ft_nbrlen(lst->content))
+			return (0);
+		lst = lst->next;
+		matrix++;
+	}
+	return (1);
 }
 
 int	check_args(char **str)
@@ -31,7 +68,14 @@ int	check_args(char **str)
 		while (str[i][j])
 		{
 			if (!ft_isdigit(str[i][j]) && !ft_is_space(str[i][j]))
-				return (0);
+			{
+				if (ft_is_sign(str[i][j]) && ft_is_sign(str[i][j - 1]))
+				{
+					return (0);
+				}
+				else if (!ft_is_sign(str[i][j]))
+					return (0);
+			}
 			j++;
 		}
 		i++;
@@ -78,10 +122,24 @@ t_list	*matrix_to_lst(char **matrix)
 	lst = ft_lstnew(ft_atoi(*matrix++));
 	while (*matrix)
 	{
-		temp = ft_lstnew(ft_atoi(*matrix++));
+		temp = ft_lstnew(atoi(*matrix++));
 		ft_lstadd_back(&lst, temp);
 	}
 	return (lst);
+}
+
+void	free_matrix(char **matrix)
+{
+	char	**temp;
+
+	temp = matrix;
+	while (*matrix)
+	{
+		free(*matrix);
+		matrix++;
+	}
+	matrix = temp;
+	free(matrix);
 }
 
 int	lst_duplcate_node(t_list *lst)
@@ -103,3 +161,4 @@ int	lst_duplcate_node(t_list *lst)
 	}
 	return (0);
 }
+
