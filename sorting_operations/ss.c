@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ss.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 04:51:47 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/07 16:43:57 by takra            ###   ########.fr       */
+/*   Created: 2023/04/06 17:46:47 by takra             #+#    #+#             */
+/*   Updated: 2023/04/07 11:35:35 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./libsorting.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ss(t_list **lsta, t_list **lstb)
 {
-	if (new)
+	if (ft_lstsize(*lsta) > 1 && ft_lstsize(*lstb) > 1)
 	{
-		new->next = *lst;
-		*lst = new;
+		swap_list(lsta);
+		swap_list(lstb);
+		ft_putendl_fd("ss", 1);
 	}
+	else if (ft_lstsize(*lsta) > 1 && ft_lstsize(*lstb) <= 1)
+		sa(lsta);
+	else if (ft_lstsize(*lstb) > 1 && ft_lstsize(*lsta) <= 1)
+		sb(lstb);
+	else
+		ft_putendl_fd("try to use the ss but the stacks are less than two elements", 1);
 }

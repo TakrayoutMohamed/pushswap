@@ -6,7 +6,7 @@
 #    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
-#    Updated: 2023/04/04 11:18:50 by takra            ###   ########.fr        #
+#    Updated: 2023/04/07 12:11:37 by takra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,14 @@ CC=cc
 LIBFT= ./Libft-42/libft.a
 CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
-SRC =  ft_utils.c push_swap.c
+SORTINGPATH=./sorting_operations/
+
+SRC =  ft_utils.c push_swap.c \
+		$(SORTINGPATH)pa.c $(SORTINGPATH)pb.c $(SORTINGPATH)ra.c \
+		$(SORTINGPATH)rb.c $(SORTINGPATH)rr.c $(SORTINGPATH)rra.c \
+		$(SORTINGPATH)rrb.c $(SORTINGPATH)rrr.c $(SORTINGPATH)sa.c \
+		$(SORTINGPATH)sb.c $(SORTINGPATH)ss.c \
+		$(SORTINGPATH)sorting_utils.c
 
 OBJ = $(SRC:.c=.o)
 

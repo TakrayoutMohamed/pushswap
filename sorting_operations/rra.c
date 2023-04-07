@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   rra.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 04:51:47 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/07 16:43:57 by takra            ###   ########.fr       */
+/*   Created: 2023/04/06 17:47:08 by takra             #+#    #+#             */
+/*   Updated: 2023/04/07 11:02:38 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./libsorting.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	rra(t_list **lst)
 {
-	if (new)
+	if (ft_lstsize(*lst) > 1)
 	{
-		new->next = *lst;
-		*lst = new;
+		revers_rotate_list(lst);
+		ft_putendl_fd("rra", 1);
 	}
 }
