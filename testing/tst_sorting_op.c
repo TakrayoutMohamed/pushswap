@@ -15,6 +15,13 @@ void	print_lst(t_list *lst)
 	lst = tmp;
 	printf("\n");
 }
+
+static void del(int content)
+{
+	content = 0;
+	(void)content;
+}
+
 int main()
 {
 	t_list  *a;
@@ -23,6 +30,7 @@ int main()
 	a = matrix_to_lst(matrix);
 	// b = malloc(sizeof(t_list));
 	b = NULL;
+	free_matrix(matrix);
 	print_lst(a);
 	printf("*****************the test starts***********\n");
 	printf("***************** pb ***********\n");
@@ -43,12 +51,12 @@ int main()
 		print_lst(a);
 		printf("list b :");
 		print_lst(b);
-	printf("***************** pa ***********\n");
-		pa(&a, &b);
-		printf("list a :");
-		print_lst(a);
-		printf("list b :");
-		print_lst(b);
+	// printf("***************** pa ***********\n");
+	// 	pa(&a, &b);
+	// 	printf("list a :");
+	// 	print_lst(a);
+	// 	printf("list b :");
+	// 	print_lst(b);
 	printf("***************** sa ***********\n");
 		sa(&a);
 		printf("list a :");
@@ -91,6 +99,8 @@ int main()
 		print_lst(a);
 		printf("list b :");
 		print_lst(b);
+	// ft_lstclear(&a, del);
+	ft_lstclear(&b, del);
 	return (0);
 }
 

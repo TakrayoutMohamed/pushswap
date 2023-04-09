@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:12:26 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/07 17:28:55 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/09 17:20:38 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ void	print_matrix(char **matrix)
 	ft_putchar_fd('}', 1);
 }
 
+static void del(int content)
+{
+	content = 0;
+	(void)content;
+}
+
 int	main(int argc, char **argv)
 {
 	char	*str_argvs;
@@ -74,6 +80,8 @@ int	main(int argc, char **argv)
 		sb(&lst);
 		print_lst(lst);
 		free_matrix(matrix);
+		free(str_argvs);
+		ft_lstclear(&lst, del);
 	}
 	return (0);
 }
