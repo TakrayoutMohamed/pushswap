@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:12:26 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/09 17:20:38 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/10 08:12:20 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	main(int argc, char **argv)
 	else
 	{
 		str_argvs = ft_joinargvs(argc, argv);
-		// str_argvs = ft_strdup("8");
+		// free(str_argvs);
+		// str_argvs = ft_strdup("1 2 3 4 5 6 7 8  9 0");
 		matrix = ft_split(str_argvs, ' ');
 		lst = matrix_to_lst(matrix);
 		printf("\n ||%s||\n", str_argvs);
@@ -79,6 +80,7 @@ int	main(int argc, char **argv)
 		print_lst(lst);
 		sb(&lst);
 		print_lst(lst);
+		printf("\nthe LIS is %d \n", lis(lst_to_array(lst), ft_lstsize(lst)));
 		free_matrix(matrix);
 		free(str_argvs);
 		ft_lstclear(&lst, del);

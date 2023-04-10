@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:11:20 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/07 09:40:14 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/10 08:07:54 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,4 +160,24 @@ int	lst_duplcate_node(t_list *lst)
 		lst = lst->next;
 	}
 	return (0);
+}
+
+int		*lst_to_array(t_list *lst)
+{
+	t_list	*temp;
+	int		*lst_array;
+	int		i;
+
+	lst_array = (int *) malloc(sizeof(int) * ft_lstsize(lst));
+	if (!lst_array)
+		return (NULL);
+	i = 0;
+	temp = lst;
+	while (temp != NULL)
+	{
+		lst_array[i++] = temp->content;
+		temp = temp->next;
+	}
+	temp = NULL;
+	return (lst_array);
 }
