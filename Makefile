@@ -6,7 +6,7 @@
 #    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
-#    Updated: 2023/04/09 17:53:14 by takra            ###   ########.fr        #
+#    Updated: 2023/04/10 11:14:28 by takra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
 SORTINGPATH=./sorting_operations/
 
-SRC =  ft_utils.c push_swap.c algo_lis.c\
+SRC =  ft_utils.c push_swap.c algo_lis.c algo_sorting.c\
 		$(SORTINGPATH)pa.c $(SORTINGPATH)pb.c $(SORTINGPATH)ra.c \
 		$(SORTINGPATH)rb.c $(SORTINGPATH)rr.c $(SORTINGPATH)rra.c \
 		$(SORTINGPATH)rrb.c $(SORTINGPATH)rrr.c $(SORTINGPATH)sa.c \

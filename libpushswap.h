@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:11:53 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/10 08:13:05 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/10 11:21:32 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 	int		lst_duplcate_node(t_list *lst);
 	int		is_int(char **matrix, t_list *lst);
 	void	free_matrix(char **matrix);
-	int		lis(int array[], int arraylen);
+	int		*lis(int array[], int arraylen);
+	void	algo_sorting(t_list *a);
 
 #endif
