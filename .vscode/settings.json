@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "libft.h": "c"
+        "libft.h": "c",
+        "libsorting.h": "c",
+        "libpushswap.h": "c",
+        "stdlib.h": "c"
     }
 }
