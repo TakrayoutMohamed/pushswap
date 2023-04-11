@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/10 13:11:41 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/11 14:14:03 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,10 @@ int	*lis(int array[], int arraylen)
 	i = -1;
 	while (++i < arraylen)
 	{
-		j = 0;
-		while (j < i)
-		{
+		j = -1;
+		while (++j < i)
 			if (array[i] > array[j] && lis[i] < lis[j] + 1)
 				lis[i] = lis[j] + 1;
-			j++;
-		}
 	}
 	indexes_of_lis = indexes_of_min_lis(array, lis, arraylen);
 	return (free(array), free(lis), indexes_of_lis);

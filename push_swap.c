@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:12:26 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/10 12:45:21 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/11 13:59:13 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 		if (!is_int(matrix, lst))
 			return (printf("thier is number that not int \n"), 0);
 		
-		algo_sorting(lst);
+		lst = algo_sorting(lst);
 		// lis_array = lis(lst_to_array(lst), ft_lstsize(lst));
 		// print_matrix(matrix);
 		// ft_putendl_fd("\n", 1);

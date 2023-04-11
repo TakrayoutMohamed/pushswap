@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:11:53 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/10 11:21:32 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/11 17:52:14 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 	int		is_int(char **matrix, t_list *lst);
 	void	free_matrix(char **matrix);
 	int		*lis(int array[], int arraylen);
-	void	algo_sorting(t_list *a);
+	t_list	*algo_sorting(t_list *a);
+	int		is_list_sorted(t_list *lst);
+	int		is_list_max(t_list *lst, int value);
+	int		is_list_min(t_list *lst, int value);
 
 #endif
