@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 11:01:22 by takra             #+#    #+#             */
-/*   Updated: 2023/04/12 16:39:26 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/12 17:14:37 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,12 +140,12 @@ void	sort_circular_list(t_list	**lst)
 	lstsize = ft_lstsize(*lst);
 	while (1)
 	{
+		if (is_sorted_list(*lst))
+			break ;
 		if (index_of_list_max(*lst) >= (lstsize / 2))
 			rra(lst);
 		else
 			ra(lst);
-		if (is_sorted_list(*lst))
-			break ;
 	}
 }
 
@@ -158,6 +158,8 @@ void	get_longest_increasement_lst(t_list **a, t_list **b)
 	i = 0;
 	j = 0;
 	lis_array = lis(lst_to_array(*a), ft_lstsize(*a));
+	if (ft_lstsize(*a) == 3)
+		sa(a);
 	while (1)
 	{
 		if (is_circular_sorted(*a))
@@ -175,7 +177,7 @@ void	circular_list(t_list **a, t_list **b)
 {
 	while (ft_lstsize(*b))
 	{
-		if (get_right_position(*a, (*b)->content) >= (ft_lstsize(*a) / 2))
+		if (get_right_position(*a, (*b)->content) > (ft_lstsize(*a) / 2))
 			rra(a);
 		else
 			ra(a);
@@ -191,8 +193,12 @@ void	algo_sorting(t_list **a)
 	b = NULL;
 	if (!is_sorted_list(*a))
 	{
-		get_longest_increasement_lst(a, &b);
-		circular_list(a, &b);
+		if (!is_circular_sorted(*a))
+		{
+			get_longest_increasement_lst(a, &b);
+		}
+		if (b != NULL)
+			circular_list(a, &b);
 		sort_circular_list(a);
 	}
 }

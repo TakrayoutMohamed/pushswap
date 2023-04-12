@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:12:26 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/12 14:50:42 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/12 17:13:02 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ int	main(int argc, char **argv)
 		// str_argvs = ft_strdup("1 2 3 4 5 6 7 8  9 0");
 		matrix = ft_split(str_argvs, ' ');
 		lst = matrix_to_lst(matrix);
-		printf("\n ||%s||\n", str_argvs);
+		// printf("\n ||%s||\n", str_argvs);
 		if (lst_duplcate_node(lst))
 			return (printf("has duplacate values \n"), 0);
 		if (!is_int(matrix, lst))
 			return (printf("thier is number that not int \n"), 0);
 		algo_sorting(&lst);
-		print_lst(lst);
+		// print_lst(lst);
 		free_matrix(matrix);
 		free(str_argvs);
 		ft_lstclear(&lst, del);
