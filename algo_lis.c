@@ -6,16 +6,16 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/11 14:14:03 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/12 16:07:58 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libpushswap.h"
 
-static int max_array(int array[],int arraylen)
+static int	max_array(int array[], int arraylen)
 {
 	int	i;
-	int max;
+	int	max;
 
 	i = 0;
 	max = array[i];
@@ -28,47 +28,50 @@ static int max_array(int array[],int arraylen)
 	return (max);
 }
 
+int	min_value_lis_index(int array[], int lis[], int lis_value, int arraylen)
+{
+	int	min_value;
+	int	i;
+
+	min_value = 2147483647;
+	i = 0;
+	while (i < arraylen)
+	{
+		// min_value = array[i];
+		if (lis[i] == lis_value && array[i] <= min_value)
+		{
+			min_value = array[i];
+		}
+		i++;
+	}
+	return (min_value);
+}
+
 static int	*indexes_of_min_lis(int array[], int lis[], int arraylen)
 {
 	int	min_value;
 	int	*indexes_lis;
 	int	i;
-	int lis_value;
+	int	lis_value;
 
 	lis_value = 1;
 	indexes_lis = (int *)malloc(sizeof(int) * max_array(lis, arraylen));
 	while (lis_value <= max_array(lis, arraylen))
 	{
-		i = 0;
-		while (i < arraylen)
-		{
-			min_value = array[i];
-			if (lis[i++] == lis_value)
-				break ;
-		}
+		min_value = min_value_lis_index(array, lis, lis_value, arraylen);
 		i = -1;
 		while (++i < arraylen)
 		{
-			// printf("\nlis[%d] = %d | lis_value = %d | array[%d] = %d | min_value = %d\n", i, lis[i], lis_value, i , array[i], min_value);
 			if (lis[i] >= lis_value && array[i] <= min_value)
 			{
 				min_value = array[i];
 				indexes_lis[lis_value - 1] = i;
-				// printf("indexes_lis[%d] = %d\n",lis_value - 1, indexes_lis[lis_value - 1]);
 			}
 			if (lis[i] > lis_value)
 				break ;
 		}
 		lis_value++;
 	}
-	// i = 0;
-	// printf("\noooooooooooo\n");
-	// while (i < 9)
-	// {
-	// 	printf("LIS[%d] = %d ",i , indexes_lis[i]);
-	// 	i++;
-	// }
-	// printf("\noooooooooooo\n");
 	return (indexes_lis);
 }
 

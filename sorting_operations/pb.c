@@ -6,14 +6,13 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:47:19 by takra             #+#    #+#             */
-/*   Updated: 2023/04/07 17:27:36 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/12 15:04:48 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "./libsorting.h"
 
-static void del(int content)
+static void	del(int content)
 {
 	content = 0;
 	(void)content;
@@ -33,6 +32,6 @@ void	pb(t_list **lstb, t_list **lsta)
 		tmp = NULL;
 		ft_putendl_fd("pb", 1);
 	}
-	else 
+	else
 		ft_putendl_fd("you tried to push from a to b but a is empty", 1);
 }

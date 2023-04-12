@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:12:26 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/11 13:59:13 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/12 14:50:42 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	main(int argc, char **argv)
 	char	*str_argvs;
 	char	**matrix;
 	t_list	*lst;
-	// int		*lis_array;
 
 	if (argc == 1)
 		ft_putendl_fd("No stack to sort", 2);
@@ -76,25 +75,10 @@ int	main(int argc, char **argv)
 			return (printf("has duplacate values \n"), 0);
 		if (!is_int(matrix, lst))
 			return (printf("thier is number that not int \n"), 0);
-		
-		lst = algo_sorting(lst);
-		// lis_array = lis(lst_to_array(lst), ft_lstsize(lst));
-		// print_matrix(matrix);
-		// ft_putendl_fd("\n", 1);
-		// print_lst(lst);
-		// sb(&lst);
+		algo_sorting(&lst);
 		print_lst(lst);
-		// int i = 0;
-		// printf("\n the lst size is %d\n", ft_lstsize(lst));
-		// while (i < 9)
-		// {
-		// 	printf("LIS[%d] = %d ",i , lis_array[i]);
-		// 	i++;
-		// }
-		printf("\n");
 		free_matrix(matrix);
 		free(str_argvs);
-		// free(lis_array);
 		ft_lstclear(&lst, del);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 11:51:31 by takra             #+#    #+#             */
-/*   Updated: 2023/04/07 11:53:02 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/12 12:35:40 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	rr(t_list **lsta, t_list **lstb)
 	else if (ft_lstsize(*lstb) > 1 && ft_lstsize(*lsta) <= 1)
 		rb(lstb);
 	else
-		ft_putendl_fd("try to use the rr but the stacks are less than two elements", 1);
+		ft_putendl_fd("try to use the rr stacks less than two elements", 1);
 }
