@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 11:01:22 by takra             #+#    #+#             */
-/*   Updated: 2023/04/12 17:14:37 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/12 18:31:53 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,9 @@ void	sort_circular_list(t_list	**lst)
 	lstsize = ft_lstsize(*lst);
 	while (1)
 	{
+		// ft_putstr_fd("\nddddd",1);
+		// ft_putnbr_fd(is_sorted_list(*lst),1);
+		// ft_putstr_fd("ddddd\n",1);
 		if (is_sorted_list(*lst))
 			break ;
 		if (index_of_list_max(*lst) >= (lstsize / 2))
@@ -177,6 +180,15 @@ void	circular_list(t_list **a, t_list **b)
 {
 	while (ft_lstsize(*b))
 	{
+		// ft_putstr_fd("posi=", 1);
+		// ft_putnbr_fd(get_right_position(*a, (*b)->content), 1);
+		// ft_putstr_fd("size=", 1);
+		// ft_putnbr_fd((ft_lstsize(*a) / 2), 1);
+		// ft_putstr_fd("\n", 1);
+		if (get_right_position(*a, (*b)->content) == 0)
+			pa(a, b);
+		if (!ft_lstsize(*b))
+			break ;
 		if (get_right_position(*a, (*b)->content) > (ft_lstsize(*a) / 2))
 			rra(a);
 		else
@@ -197,8 +209,10 @@ void	algo_sorting(t_list **a)
 		{
 			get_longest_increasement_lst(a, &b);
 		}
+		// ft_putstr_fd("\nffffffff\n",1);
 		if (b != NULL)
 			circular_list(a, &b);
+		// ft_putstr_fd("\nffffffff\n",1);
 		sort_circular_list(a);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/12 16:07:58 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/12 17:59:13 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	min_value_lis_index(int array[], int lis[], int lis_value, int arraylen)
 	i = 0;
 	while (i < arraylen)
 	{
-		// min_value = array[i];
 		if (lis[i] == lis_value && array[i] <= min_value)
 		{
 			min_value = array[i];
+			return (min_value);
 		}
 		i++;
 	}
@@ -62,7 +62,7 @@ static int	*indexes_of_min_lis(int array[], int lis[], int arraylen)
 		i = -1;
 		while (++i < arraylen)
 		{
-			if (lis[i] >= lis_value && array[i] <= min_value)
+			if (lis[i] == lis_value && array[i] <= min_value)
 			{
 				min_value = array[i];
 				indexes_lis[lis_value - 1] = i;
