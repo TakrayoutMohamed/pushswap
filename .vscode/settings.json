@@ -3,6 +3,8 @@
         "libft.h": "c",
         "libsorting.h": "c",
         "libpushswap.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "libsortalgo.h": "c",
+        "liboperation.h": "c"
     }
 }
