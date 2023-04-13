@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 11:01:22 by takra             #+#    #+#             */
-/*   Updated: 2023/04/12 18:31:53 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/13 09:38:39 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,26 +152,64 @@ void	sort_circular_list(t_list	**lst)
 	}
 }
 
+int	lis_len(int array[], int arraylen)
+{
+	int	len;
+	int	*lis;
+	int	i;
+	int	j;
+
+	i = 0;
+	len = 0;
+	lis = (int *)malloc (sizeof(int) * arraylen);
+	if (!lis)
+		return (free(array), 0);
+	while (i < arraylen)
+		lis[i++] = 1;
+	i = -1;
+	while (++i < arraylen)
+	{
+		j = -1;
+		while (++j < i)
+			if (array[i] > array[j] && lis[i] < lis[j] + 1)
+				lis[i] = lis[j] + 1;
+	}
+	len = max_array(lis, arraylen);
+	return (free(array), free(lis), len);
+}
+
 void	get_longest_increasement_lst(t_list **a, t_list **b)
 {
 	int		*lis_array;
+	int		array_lis_len;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
+	array_lis_len = lis_len(lst_to_array(*a), ft_lstsize(*a));
+	// ft_putstr_fd("array_lis_len=", 1);
+	// ft_putnbr_fd(array_lis_len, 1);
+	// // exit(0);
 	lis_array = lis(lst_to_array(*a), ft_lstsize(*a));
 	if (ft_lstsize(*a) == 3)
 		sa(a);
 	while (1)
 	{
+		if (ft_lstsize(*a) == 3 && !is_circular_sorted(*a))
+			sa(a);
 		if (is_circular_sorted(*a))
 			break ;
-		if (i == lis_array[j] && j++ > -1)
+		if (j < array_lis_len && i == lis_array[j] && j++ > -1)
 			ra(a);
 		else
 			pb(b, a);
 		i++;
+		// ft_putstr_fd("j=", 1);
+		// ft_putnbr_fd(j, 1);
+		// ft_putstr_fd(" i=", 1);
+		// ft_putnbr_fd(i, 1);
+		// ft_putstr_fd("\n", 1);
 	}
 	free(lis_array);
 }
@@ -187,14 +225,18 @@ void	circular_list(t_list **a, t_list **b)
 		// ft_putstr_fd("\n", 1);
 		if (get_right_position(*a, (*b)->content) == 0)
 			pa(a, b);
-		if (!ft_lstsize(*b))
-			break ;
-		if (get_right_position(*a, (*b)->content) > (ft_lstsize(*a) / 2))
-			rra(a);
+		// if (!ft_lstsize(*b))
+		// 	break ;
 		else
-			ra(a);
-		if (get_right_position(*a, (*b)->content) == 0)
-			pa(a, b);
+		{
+			if (get_right_position(*a, (*b)->content) > (ft_lstsize(*a) / 2))
+				rra(a);
+			else
+				ra(a);
+			if (get_right_position(*a, (*b)->content) == 0)
+				pa(a, b);
+
+		}
 	}
 }
 
@@ -210,7 +252,7 @@ void	algo_sorting(t_list **a)
 			get_longest_increasement_lst(a, &b);
 		}
 		// ft_putstr_fd("\nffffffff\n",1);
-		if (b != NULL)
+		if (ft_lstsize(b))
 			circular_list(a, &b);
 		// ft_putstr_fd("\nffffffff\n",1);
 		sort_circular_list(a);

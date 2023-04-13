@@ -6,13 +6,13 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/12 17:59:13 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/13 09:33:58 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libpushswap.h"
 
-static int	max_array(int array[], int arraylen)
+int	max_array(int array[], int arraylen)
 {
 	int	i;
 	int	max;
