@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libparsing.h                                       :+:      :+:    :+:   */
+/*   is_sorted_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 11:50:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 16:04:39 by takra            ###   ########.fr       */
+/*   Created: 2023/04/13 14:53:17 by takra             #+#    #+#             */
+/*   Updated: 2023/04/13 15:18:08 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPARSING_H
-# define LIBPARSING_H
-# include "./../libpushswap.h"
+#include "./../libsortalgo.h"
 
-int	is_only_nbrs(char **str);
-int	lst_duplicate_node(t_list *lst);
-int	is_int(char **matrix, t_list *lst);
-int	is_valid_list(char **matrix, char **argv, t_list *lst);
+/*return true if the given lst is sorted in ascending order*/
+int	is_sorted_list(t_list *lst)
+{
+	t_list	*tmp;
 
-#endif
+	tmp = lst;
+	while (tmp->next != NULL)
+	{
+		if (tmp->content > tmp->next->content)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}

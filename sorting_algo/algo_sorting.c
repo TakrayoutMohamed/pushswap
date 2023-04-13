@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libparsing.h                                       :+:      :+:    :+:   */
+/*   algo_sorting.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 11:50:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 16:04:39 by takra            ###   ########.fr       */
+/*   Created: 2023/04/13 14:36:19 by takra             #+#    #+#             */
+/*   Updated: 2023/04/13 15:21:07 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPARSING_H
-# define LIBPARSING_H
-# include "./../libpushswap.h"
+#include "./libsortalgo.h"
 
-int	is_only_nbrs(char **str);
-int	lst_duplicate_node(t_list *lst);
-int	is_int(char **matrix, t_list *lst);
-int	is_valid_list(char **matrix, char **argv, t_list *lst);
+/*sort the list a in ascending order*/
+void	algo_sorting(t_list **a)
+{
+	t_list	*b;
 
-#endif
+	b = NULL;
+	if (!is_sorted_list(*a))
+	{
+		if (!is_circular_sorted(*a))
+		{
+			get_longest_increasement_lst(a, &b);
+		}
+		if (ft_lstsize(b))
+			circular_list(a, &b);
+		sort_circular_list(a);
+	}
+}

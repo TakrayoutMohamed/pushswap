@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libparsing.h                                       :+:      :+:    :+:   */
+/*   circular_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 11:50:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 16:04:39 by takra            ###   ########.fr       */
+/*   Created: 2023/04/13 14:54:36 by takra             #+#    #+#             */
+/*   Updated: 2023/04/13 14:56:32 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPARSING_H
-# define LIBPARSING_H
-# include "./../libpushswap.h"
+#include "./../libsortalgo.h"
 
-int	is_only_nbrs(char **str);
-int	lst_duplicate_node(t_list *lst);
-int	is_int(char **matrix, t_list *lst);
-int	is_valid_list(char **matrix, char **argv, t_list *lst);
-
-#endif
+/*add elements of b to a in a circular sort*/
+void	circular_list(t_list **a, t_list **b)
+{
+	while (ft_lstsize(*b))
+	{
+		if (get_right_position(*a, (*b)->content) == 0)
+			pa(a, b);
+		else
+		{
+			if (get_right_position(*a, (*b)->content) > (ft_lstsize(*a) / 2))
+				rra(a);
+			else
+				ra(a);
+			if (get_right_position(*a, (*b)->content) == 0)
+				pa(a, b);
+		}
+	}
+}

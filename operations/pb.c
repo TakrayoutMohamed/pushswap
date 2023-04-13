@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libparsing.h                                       :+:      :+:    :+:   */
+/*   pb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 11:50:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 16:04:39 by takra            ###   ########.fr       */
+/*   Created: 2023/04/06 17:47:19 by takra             #+#    #+#             */
+/*   Updated: 2023/04/13 15:52:32 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPARSING_H
-# define LIBPARSING_H
-# include "./../libpushswap.h"
+#include "./liboperation.h"
 
-int	is_only_nbrs(char **str);
-int	lst_duplicate_node(t_list *lst);
-int	is_int(char **matrix, t_list *lst);
-int	is_valid_list(char **matrix, char **argv, t_list *lst);
+void	pb(t_list **lstb, t_list **lsta)
+{
+	t_list	*tmp;
 
-#endif
+	if (ft_lstsize(*lsta) > 0)
+	{
+		tmp = *lsta;
+		ft_lstadd_front(lstb, ft_lstnew((*lsta)->content));
+		tmp = tmp->next;
+		ft_lstdelone(*lsta, del);
+		(*lsta) = tmp;
+		tmp = NULL;
+		ft_putendl_fd("pb", 1);
+	}
+}

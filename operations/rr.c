@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_duplicate_node.c                               :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 12:02:55 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 14:29:19 by takra            ###   ########.fr       */
+/*   Created: 2023/04/07 11:51:31 by takra             #+#    #+#             */
+/*   Updated: 2023/04/13 15:49:52 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../libparsing.h"
+#include "./liboperation.h"
 
-/*return true if thier is two nodes with the same content value*/
-int	lst_duplicate_node(t_list *lst)
+void	rr(t_list **lsta, t_list **lstb)
 {
-	t_list	*temp;
-	int		value;
-
-	while (lst != NULL)
+	if (ft_lstsize(*lsta) > 1 && ft_lstsize(*lstb) > 1)
 	{
-		temp = lst;
-		value = temp->content;
-		while (temp != NULL)
-		{
-			temp = temp->next;
-			if (temp != NULL && temp->content == value)
-				return (1);
-		}
-		lst = lst->next;
+		rotate_list(lsta);
+		rotate_list(lstb);
+		ft_putendl_fd("rr", 1);
 	}
-	return (0);
+	else if (ft_lstsize(*lsta) > 1 && ft_lstsize(*lstb) <= 1)
+		ra(lsta);
+	else if (ft_lstsize(*lstb) > 1 && ft_lstsize(*lsta) <= 1)
+		rb(lstb);
+	else
+		ft_putendl_fd("try to use the rr stacks less than two elements", 1);
 }

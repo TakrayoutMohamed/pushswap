@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libparsing.h                                       :+:      :+:    :+:   */
+/*   rrr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 11:50:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 16:04:39 by takra            ###   ########.fr       */
+/*   Created: 2023/04/06 17:47:02 by takra             #+#    #+#             */
+/*   Updated: 2023/04/13 15:51:49 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPARSING_H
-# define LIBPARSING_H
-# include "./../libpushswap.h"
+#include "./liboperation.h"
 
-int	is_only_nbrs(char **str);
-int	lst_duplicate_node(t_list *lst);
-int	is_int(char **matrix, t_list *lst);
-int	is_valid_list(char **matrix, char **argv, t_list *lst);
-
-#endif
+void	rrr(t_list **lsta, t_list **lstb)
+{
+	if (ft_lstsize(*lsta) > 1 && ft_lstsize(*lstb) > 1)
+	{
+		revers_rotate_list(lsta);
+		revers_rotate_list(lstb);
+		ft_putendl_fd("rrr", 1);
+	}
+	else if (ft_lstsize(*lsta) > 1 && ft_lstsize(*lstb) <= 1)
+		rra(lsta);
+	else if (ft_lstsize(*lstb) > 1 && ft_lstsize(*lsta) <= 1)
+		rrb(lstb);
+}

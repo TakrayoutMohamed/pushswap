@@ -16,11 +16,11 @@ void	print_lst(t_list *lst)
 	printf("\n");
 }
 
-static void del(int content)
-{
-	content = 0;
-	(void)content;
-}
+// static void del(int content)
+// {
+// 	content = 0;
+// 	(void)content;
+// }
 
 int main()
 {

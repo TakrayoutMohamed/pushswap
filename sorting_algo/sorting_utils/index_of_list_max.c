@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libparsing.h                                       :+:      :+:    :+:   */
+/*   index_of_list_max.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 11:50:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 16:04:39 by takra            ###   ########.fr       */
+/*   Created: 2023/04/13 15:05:55 by takra             #+#    #+#             */
+/*   Updated: 2023/04/13 15:08:17 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPARSING_H
-# define LIBPARSING_H
-# include "./../libpushswap.h"
+#include "./../libsortalgo.h"
 
-int	is_only_nbrs(char **str);
-int	lst_duplicate_node(t_list *lst);
-int	is_int(char **matrix, t_list *lst);
-int	is_valid_list(char **matrix, char **argv, t_list *lst);
+/*return the index of the max element of the list lst*/
+int	index_of_list_max(t_list *lst)
+{
+	int		indexmax;
+	int		max;
+	int		i;
+	t_list	*tmp;
 
-#endif
+	indexmax = 0;
+	i = 0;
+	tmp = lst;
+	max = tmp->content;
+	while (tmp != NULL)
+	{
+		if (tmp->content >= max)
+		{
+			max = tmp->content;
+			indexmax = i;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	return (indexmax);
+}
