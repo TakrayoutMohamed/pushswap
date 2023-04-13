@@ -6,18 +6,20 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 11:01:22 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 09:38:39 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/13 11:44:15 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libpushswap.h"
 
+/*does nothing ,its only here becouse of the prototype of lstclear(lst, del)*/
 void	del(int content)
 {
 	content = 0;
 	(void)content;
 }
 
+/*return true if the given value is greater than all elements of lst*/
 int	is_list_max(t_list *lst, int value)
 {
 	t_list	*tmp;
@@ -32,6 +34,7 @@ int	is_list_max(t_list *lst, int value)
 	return (1);
 }
 
+/*return true if the given value is smaller than all elements of lst*/
 int	is_list_min(t_list *lst, int value)
 {
 	t_list	*tmp;
@@ -46,6 +49,7 @@ int	is_list_min(t_list *lst, int value)
 	return (1);
 }
 
+/*return the index of the max element of the list lst*/
 int	index_of_list_max(t_list *lst)
 {
 	int		indexmax;
@@ -70,6 +74,7 @@ int	index_of_list_max(t_list *lst)
 	return (indexmax);
 }
 
+/*return the index that the value should be in to still have lst circular*/
 int	get_right_position(t_list *lst, int value)
 {
 	t_list	*tmp;
@@ -96,6 +101,7 @@ int	get_right_position(t_list *lst, int value)
 	return (position);
 }
 
+/*return true if the given lst is sorted in ascending order*/
 int	is_sorted_list(t_list *lst)
 {
 	t_list	*tmp;
@@ -110,6 +116,7 @@ int	is_sorted_list(t_list *lst)
 	return (1);
 }
 
+/*return true if the given lst is circular in ascending order*/
 int	is_circular_sorted(t_list *lst)
 {
 	t_list	*tmp;
@@ -133,6 +140,7 @@ int	is_circular_sorted(t_list *lst)
 	return (1);
 }
 
+/*sort a list that is already circular sorted*/
 void	sort_circular_list(t_list	**lst)
 {
 	int	lstsize;
@@ -140,9 +148,6 @@ void	sort_circular_list(t_list	**lst)
 	lstsize = ft_lstsize(*lst);
 	while (1)
 	{
-		// ft_putstr_fd("\nddddd",1);
-		// ft_putnbr_fd(is_sorted_list(*lst),1);
-		// ft_putstr_fd("ddddd\n",1);
 		if (is_sorted_list(*lst))
 			break ;
 		if (index_of_list_max(*lst) >= (lstsize / 2))
@@ -152,6 +157,7 @@ void	sort_circular_list(t_list	**lst)
 	}
 }
 
+/*return the number of langest increasement subsequence in a given array*/
 int	lis_len(int array[], int arraylen)
 {
 	int	len;
@@ -178,6 +184,7 @@ int	lis_len(int array[], int arraylen)
 	return (free(array), free(lis), len);
 }
 
+/*keep the langest increasment subsequence in the list a and push others to b*/
 void	get_longest_increasement_lst(t_list **a, t_list **b)
 {
 	int		*lis_array;
@@ -188,9 +195,6 @@ void	get_longest_increasement_lst(t_list **a, t_list **b)
 	i = 0;
 	j = 0;
 	array_lis_len = lis_len(lst_to_array(*a), ft_lstsize(*a));
-	// ft_putstr_fd("array_lis_len=", 1);
-	// ft_putnbr_fd(array_lis_len, 1);
-	// // exit(0);
 	lis_array = lis(lst_to_array(*a), ft_lstsize(*a));
 	if (ft_lstsize(*a) == 3)
 		sa(a);
@@ -205,28 +209,17 @@ void	get_longest_increasement_lst(t_list **a, t_list **b)
 		else
 			pb(b, a);
 		i++;
-		// ft_putstr_fd("j=", 1);
-		// ft_putnbr_fd(j, 1);
-		// ft_putstr_fd(" i=", 1);
-		// ft_putnbr_fd(i, 1);
-		// ft_putstr_fd("\n", 1);
 	}
 	free(lis_array);
 }
 
+/*add elements of b to a in a circular sort*/
 void	circular_list(t_list **a, t_list **b)
 {
 	while (ft_lstsize(*b))
 	{
-		// ft_putstr_fd("posi=", 1);
-		// ft_putnbr_fd(get_right_position(*a, (*b)->content), 1);
-		// ft_putstr_fd("size=", 1);
-		// ft_putnbr_fd((ft_lstsize(*a) / 2), 1);
-		// ft_putstr_fd("\n", 1);
 		if (get_right_position(*a, (*b)->content) == 0)
 			pa(a, b);
-		// if (!ft_lstsize(*b))
-		// 	break ;
 		else
 		{
 			if (get_right_position(*a, (*b)->content) > (ft_lstsize(*a) / 2))
@@ -235,11 +228,11 @@ void	circular_list(t_list **a, t_list **b)
 				ra(a);
 			if (get_right_position(*a, (*b)->content) == 0)
 				pa(a, b);
-
 		}
 	}
 }
 
+/*sort the list a in ascending order*/
 void	algo_sorting(t_list **a)
 {
 	t_list	*b;
@@ -251,10 +244,8 @@ void	algo_sorting(t_list **a)
 		{
 			get_longest_increasement_lst(a, &b);
 		}
-		// ft_putstr_fd("\nffffffff\n",1);
 		if (ft_lstsize(b))
 			circular_list(a, &b);
-		// ft_putstr_fd("\nffffffff\n",1);
 		sort_circular_list(a);
 	}
 }

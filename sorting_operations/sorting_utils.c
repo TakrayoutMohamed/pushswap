@@ -6,17 +6,11 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 09:36:19 by takra             #+#    #+#             */
-/*   Updated: 2023/04/07 17:21:32 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/13 11:40:35 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libsorting.h"
-
-static void	del(int content)
-{
-	content = 0;
-	(void)content;
-}
 
 static void	ft_swap(int *a, int *b)
 {

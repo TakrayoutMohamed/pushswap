@@ -6,12 +6,13 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:26 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 09:33:58 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/13 11:17:41 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libpushswap.h"
 
+/*return the max of an array*/
 int	max_array(int array[], int arraylen)
 {
 	int	i;
@@ -28,25 +29,28 @@ int	max_array(int array[], int arraylen)
 	return (max);
 }
 
-int	min_value_lis_index(int array[], int lis[], int lis_value, int arraylen)
+/*return the first value of an array while lis of its index equal lis_value*/
+int	first_value_lis_index(int array[], int lis[], int lis_value, int arraylen)
 {
-	int	min_value;
+	int	first_value;
 	int	i;
 
-	min_value = 2147483647;
+	first_value = 2147483647;
 	i = 0;
 	while (i < arraylen)
 	{
-		if (lis[i] == lis_value && array[i] <= min_value)
+		if (lis[i] == lis_value)
 		{
-			min_value = array[i];
-			return (min_value);
+			first_value = array[i];
+			return (first_value);
 		}
 		i++;
 	}
-	return (min_value);
+	return (first_value);
 }
 
+/*returns a pointer to an array that filled with indexes of*/
+/*minimal value of an increasement of an L.I.S*/
 static int	*indexes_of_min_lis(int array[], int lis[], int arraylen)
 {
 	int	min_value;
@@ -58,7 +62,7 @@ static int	*indexes_of_min_lis(int array[], int lis[], int arraylen)
 	indexes_lis = (int *)malloc(sizeof(int) * max_array(lis, arraylen));
 	while (lis_value <= max_array(lis, arraylen))
 	{
-		min_value = min_value_lis_index(array, lis, lis_value, arraylen);
+		min_value = first_value_lis_index(array, lis, lis_value, arraylen);
 		i = -1;
 		while (++i < arraylen)
 		{
@@ -74,7 +78,8 @@ static int	*indexes_of_min_lis(int array[], int lis[], int arraylen)
 	}
 	return (indexes_lis);
 }
-
+/*returns a pointer to an array that filled with indexes of*/
+/*longest increasement subsequence of a given array */
 int	*lis(int array[], int arraylen)
 {
 	int	*lis;

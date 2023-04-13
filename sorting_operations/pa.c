@@ -6,17 +6,11 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:47:21 by takra             #+#    #+#             */
-/*   Updated: 2023/04/12 15:04:29 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/13 11:41:55 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libsorting.h"
-
-static void	del(int content)
-{
-	content = 0;
-	(void)content;
-}
 
 void	pa(t_list **lsta, t_list **lstb)
 {

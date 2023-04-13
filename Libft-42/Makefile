@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
+#    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
-#    Updated: 2022/11/01 10:17:00 by mohtakra         ###   ########.fr        #
+#    Updated: 2023/04/13 11:45:09 by takra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,4 +56,4 @@ bonus : $(OBJB)
 	
 re: fclean all
 
-.PHONE : clean $(NAME) all fclean bonus re
+.PHONY : clean $(NAME) all fclean bonus re

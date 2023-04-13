@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:11:53 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/13 09:34:05 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/13 11:32:16 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include "./Libft-42/libft.h"
 # include "./sorting_operations/libsorting.h"
 
+void	del(int content);
 int		check_args(char **str);
 char	*ft_joinargvs(int argc, char **argv);
-char	*ft_strtrim_free(char *str, char *set);
 t_list	*matrix_to_lst(char **matrix);
 int		*lst_to_array(t_list *lst);
 int		lst_duplcate_node(t_list *lst);
