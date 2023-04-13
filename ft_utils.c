@@ -6,83 +6,13 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:11:20 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/12 15:05:14 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/13 12:02:28 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpushswap.h"
 
-static int	ft_is_space(char c)
-{
-	if (c == 32 || (c >= 9 && c <= 13))
-		return (1);
-	return (0);
-}
-
-static int	ft_is_sign(char c)
-{
-	if (c == '-' || c == '+')
-		return (1);
-	return (0);
-}
-
-static int	ft_nbrlen(int nbr)
-{
-	int	len;
-
-	len = 0;
-	if (nbr <= 0)
-	{
-		len++;
-		nbr *= -1;
-	}
-	while (nbr)
-	{
-		nbr /= 10;
-		len++;
-	}
-	return (len);
-}
-
-int	is_int(char **matrix, t_list *lst)
-{
-	while (*matrix && lst)
-	{
-		if ((int)ft_strlen(*matrix) != ft_nbrlen(lst->content))
-			return (0);
-		lst = lst->next;
-		matrix++;
-	}
-	return (1);
-}
-
-int	check_args(char **str)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (str[i])
-	{
-		j = 0;
-		while (str[i][j])
-		{
-			if (!ft_isdigit(str[i][j]) && !ft_is_space(str[i][j]))
-			{
-				if (ft_is_sign(str[i][j]) && ft_is_sign(str[i][j - 1]))
-				{
-					return (0);
-				}
-				else if (!ft_is_sign(str[i][j]))
-					return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
+/*return a pointer to str of joined content of the double pointer argv*/
 char	*ft_joinargvs(int argc, char **argv)
 {
 	char	*str_argvs;
@@ -114,6 +44,7 @@ char	*ft_strtrim_free(char *str, char *set)
 	return (str);
 }
 
+/*return a list that's filled by the values of the matrix converted to int*/
 t_list	*matrix_to_lst(char **matrix)
 {
 	t_list	*lst;
@@ -128,6 +59,7 @@ t_list	*matrix_to_lst(char **matrix)
 	return (lst);
 }
 
+/*used to free a double pointer char proprly*/
 void	free_matrix(char **matrix)
 {
 	char	**temp;
@@ -142,26 +74,7 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-int	lst_duplcate_node(t_list *lst)
-{
-	t_list	*temp;
-	int		value;
-
-	while (lst != NULL)
-	{
-		temp = lst;
-		value = temp->content;
-		while (temp != NULL)
-		{
-			temp = temp->next;
-			if (temp != NULL && temp->content == value)
-				return (1);
-		}
-		lst = lst->next;
-	}
-	return (0);
-}
-
+/*return a pointer to an array that filled with lst's values*/
 int	*lst_to_array(t_list *lst)
 {
 	t_list	*temp;

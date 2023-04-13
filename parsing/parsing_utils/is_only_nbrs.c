@@ -1,0 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_only_nbrs.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/13 11:49:51 by takra             #+#    #+#             */
+/*   Updated: 2023/04/13 13:57:32 by takra            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "./../libparsing.h"
+
+/*return true if the given char a space char*/
+static int	ft_is_space(char c)
+{
+	if (c == 32 || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
+}
+
+/*return true if the given char is a sign + or - */
+static int	ft_is_sign(char c)
+{
+	if (c == '-' || c == '+')
+		return (1);
+	return (0);
+}
+
+/*return true if the **str is only integers + and -*/
+int	is_only_nbrs(char **str)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (!ft_isdigit(str[i][j]) && !ft_is_space(str[i][j]))
+			{
+				if (ft_is_sign(str[i][j]) && ft_is_sign(str[i][j - 1]))
+				{
+					return (0);
+				}
+				else if (!ft_is_sign(str[i][j]))
+					return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}

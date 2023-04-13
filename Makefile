@@ -6,7 +6,7 @@
 #    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
-#    Updated: 2023/04/10 11:14:28 by takra            ###   ########.fr        #
+#    Updated: 2023/04/13 14:06:15 by takra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ LIBFT= ./Libft-42/libft.a
 CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
 SORTINGPATH=./sorting_operations/
+PARSINGPATH=./parsing/parsing_utils/
 
+SRCPARSING= $(PARSINGPATH)../is_valid_list.c $(PARSINGPATH)is_int.c \
+			$(PARSINGPATH)lst_duplicate_node.c $(PARSINGPATH)is_only_nbrs.c
 SRC =  ft_utils.c push_swap.c algo_lis.c algo_sorting.c\
 		$(SORTINGPATH)pa.c $(SORTINGPATH)pb.c $(SORTINGPATH)ra.c \
 		$(SORTINGPATH)rb.c $(SORTINGPATH)rr.c $(SORTINGPATH)rra.c \
@@ -25,11 +28,12 @@ SRC =  ft_utils.c push_swap.c algo_lis.c algo_sorting.c\
 		$(SORTINGPATH)sorting_utils.c
 
 OBJ = $(SRC:.c=.o)
+OBJPARSING = $(SRCPARSING:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) 
-		$(CC) -o $@ $(OBJ) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJ) $(OBJPARSING)
+		$(CC) -o $@ $(OBJ) $(OBJPARSING) $(LIBFT)
 		@echo "the files has ben archived successfully"
 
 %.o: %.c libpushswap.h
@@ -40,7 +44,7 @@ $(LIBFT):
 	make -C ./Libft-42 
 
 clean:
-		@$(RM) $(OBJ)
+		@$(RM) $(OBJ) $(OBJPARSING)
 		make -C ./Libft-42 clean
 		@echo "all the .o has been deleted successfully"
 fclean: clean

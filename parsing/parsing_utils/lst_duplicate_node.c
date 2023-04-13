@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   lst_duplicate_node.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 16:12:26 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/13 14:10:07 by takra            ###   ########.fr       */
+/*   Created: 2023/04/13 12:02:55 by takra             #+#    #+#             */
+/*   Updated: 2023/04/13 13:42:31 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libpushswap.h"
+#include "./../libparsing.h"
 
-int	main(int argc, char **argv)
+/*return true if thier is two nodes with the same content value*/
+int	lst_duplicate_node(t_list *lst)
 {
-	char	*str_argvs;
-	char	**matrix;
-	t_list	*lst;
+	t_list	*temp;
+	int		value;
 
-	if (argc == 1)
-		return (0);
-	else
+	while (lst != NULL)
 	{
-		str_argvs = ft_joinargvs(argc, argv);
-		matrix = ft_split(str_argvs, ' ');
-		lst = matrix_to_lst(matrix);
-		if (!is_valid_list(matrix, argv, lst))
+		temp = lst;
+		value = temp->content;
+		while (temp != NULL)
 		{
-			ft_putstr_fd("Error\n", 2);
+			temp = temp->next;
+			if (temp != NULL && temp->content == value)
+				return (1);
 		}
-		else
-		{
-			algo_sorting(&lst);
-		}
-		free_matrix(matrix);
-		free(str_argvs);
-		ft_lstclear(&lst, del);
+		lst = lst->next;
 	}
 	return (0);
 }
