@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:11:20 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/13 15:23:16 by takra            ###   ########.fr       */
+/*   Updated: 2023/04/15 09:15:50 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_list	*matrix_to_lst(char **matrix)
 	t_list	*lst;
 	t_list	*temp;
 
+	if(!(*matrix))
+		return (NULL);
 	lst = ft_lstnew(ft_atoi(*matrix++));
 	while (*matrix)
 	{
