@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:54:36 by takra             #+#    #+#             */
-/*   Updated: 2023/05/09 23:09:33 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/10 09:59:34 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,6 @@ static void	fill_position_of_b_in_a(t_list **a, t_list **b)
 		while (tmp != NULL)
 		{
 			tmp->position = get_right_position(*a, tmp->content);
-			// ft_putstr_fd("\nhere the position of the number ",1);
-			// ft_putnbr_fd(tmp->content ,1);
-			// ft_putstr_fd(" is  \n",1);
-			// ft_putnbr_fd(tmp->position ,1);
-			// ft_putstr_fd("\n",1);
 			tmp = tmp->next;
 		}
 	}
@@ -106,37 +101,26 @@ void	sort_b_in_a(t_list **a, t_list **b, int index, int position)
 	if (position > 0 && index > 0)
 	{
 		if (position + index <= ft_lstsize(*a) / 2)
-		{
 			rr(a, b);
-		}
 		else
-		{
 			rrr(a, b);
-		}
 	}
 	else if (position == 0 && index != 0)
 	{
 		if (index > ft_lstsize(*b) / 2)
-		{
 			rrb(b);
-		}
 		else
-		{
 			rb(b);
-		}
 	}
 	else if (position != 0 && index == 0)
 	{
 		if (position > ft_lstsize(*a) / 2)
-		{
 			rra(a);
-		}
 		else
-		{
 			ra(a);
-		}
 	}
 }
+
 /*add elements of b to a in a circular sort*/
 void	circular_list(t_list **a, t_list **b)
 {
@@ -149,19 +133,25 @@ void	circular_list(t_list **a, t_list **b)
 	{
 		while (1)
 		{
+			fill_position_of_b_in_a(a, b);
+			fill_indexes_of_a_b(a, b);
 			index_of_prior_node = get_index_of_prior_node(b);
 			position_of_prior_node = get_position_of_prior_node(b);
 			// printf("p index = %d\np position = %d",index_of_prior_node,position_of_prior_node);
 			// exit(0);
-			fill_position_of_b_in_a(a, b);
-			fill_indexes_of_a_b(a, b);
+			// ft_putstr_fd("\nnumber = ",1);
+			// ft_putnbr_fd((*b)->content ,1);
+			// ft_putstr_fd(" and index = ",1);
+			// ft_putnbr_fd((*b)->index ,1);
+			// ft_putstr_fd(" and position = ",1);
+			// ft_putnbr_fd((*b)->position ,1);
+			// ft_putstr_fd("\n",1);
 			if ((*b)->index == 0 && (*b)->position == 0)
 			{
 				pa(a, b);
 				break ;
 			}
 			sort_b_in_a(a, b, index_of_prior_node, position_of_prior_node);
-			// index_of_prior_node--;
 		}
 	}
 }

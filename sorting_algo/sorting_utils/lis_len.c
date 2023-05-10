@@ -6,13 +6,13 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:07:15 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 15:09:25 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/10 08:37:41 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../libsortalgo.h"
 
-/*return the number of langest increasement subsequence in a given array*/
+/*return the number of longest increasement subsequence in a given array*/
 int	lis_len(int array[], int arraylen)
 {
 	int	len;
