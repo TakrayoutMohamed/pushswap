@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 11:50:44 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 16:09:05 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/11 00:23:56 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	rb(t_list **lst)
 {
 	if (ft_lstsize(*lst) > 1)
 	{
+
 		rotate_list(lst);
 		ft_putendl_fd("rb", 1);
 	}

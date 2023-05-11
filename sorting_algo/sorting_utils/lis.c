@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:26 by takra             #+#    #+#             */
-/*   Updated: 2023/05/10 19:37:17 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/11 18:16:46 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,28 @@ static int	first_value(int array[], int lis[], int lis_value, int arraylen)
 	return (value);
 }
 
+int	still_has_next_values(int array[], int arraylen, int startindex)
+{
+	int	max_value;
+	int	greater;
+	int	i;
+
+	i = startindex;
+	max_value = max_array(array, arraylen);
+	greater = array[i] + 1;
+	while (i < arraylen)
+	{
+		if (array[i] == greater)
+		{
+			greater = array[i] + 1;
+		}
+		i++;
+	}
+	if (greater - 1 == max_value)
+		return (1);
+	return (0);
+}
+
 /*returns a pointer to an array that filled with indexes of
 	minimal value of an increasement of an L.I.S*/
 static int	*indexes_of_min_lis(int array[], int lis[], int arraylen)
@@ -41,9 +63,9 @@ static int	*indexes_of_min_lis(int array[], int lis[], int arraylen)
 	int	i;
 	int	lis_value;
 
-	lis_value = 1;
+	lis_value = 0;
 	indexes_lis = (int *)malloc(sizeof(int) * max_array(lis, arraylen));
-	while (lis_value <= max_array(lis, arraylen))
+	while (++lis_value <= max_array(lis, arraylen))
 	{
 		min_value = first_value(array, lis, lis_value, arraylen);
 		i = -1;
@@ -51,13 +73,13 @@ static int	*indexes_of_min_lis(int array[], int lis[], int arraylen)
 		{
 			if (lis[i] == lis_value && array[i] <= min_value)
 			{
-				min_value = array[i];
-				indexes_lis[lis_value - 1] = i;
+				if (still_has_next_values(lis, arraylen, i))
+				{
+					min_value = array[i];
+					indexes_lis[lis_value - 1] = i;
+				}
 			}
-			if (lis[i] > lis_value || lis[i] == max_array(lis, arraylen))
-				break ;
 		}
-		lis_value++;
 	}
 	return (indexes_lis);
 }

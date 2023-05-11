@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:53:03 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 14:57:55 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/11 18:10:56 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void	sort_circular_list(t_list	**lst)
 	int	lstsize;
 
 	lstsize = ft_lstsize(*lst);
-	while (1)
+	while (!is_sorted_list(*lst))
 	{
-		if (is_sorted_list(*lst))
-			break ;
 		if (index_of_list_max(*lst) >= (lstsize / 2))
 			rra(lst);
 		else

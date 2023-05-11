@@ -1,5 +1,24 @@
-#include "./../sorting_operations/libsorting.h"
+#include "./../operations/liboperation.h"
+#include "./../Libft-42/libft.h"
 #include "./../libpushswap.h"
+
+static void	fill_indexes_of_a(t_list **a)
+{
+	t_list	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = *a;
+	if (ft_lstsize(*a) > 0)
+	{
+		while (tmp != NULL)
+		{
+			tmp->index = i++;
+			tmp = tmp->next;
+		}
+	}
+}
+
 void	print_lst(t_list *lst)
 {
 	t_list	*tmp;
@@ -8,7 +27,7 @@ void	print_lst(t_list *lst)
 	while (lst != NULL)
 	{
 		// write(1 ," here1 ",7);
-		printf("**%d** -> ",lst->content);
+		printf("**v=%d, i=%d, p=%d** -> ",lst->content,lst->index,lst->position);
 		// write(1 ," here ",7);
 		lst = lst->next;
 	}
@@ -31,6 +50,8 @@ int main()
 	// b = malloc(sizeof(t_list));
 	b = NULL;
 	free_matrix(matrix);
+	fill_positions_of_a(&a);
+	fill_indexes_of_a(&a);
 	print_lst(a);
 	printf("*****************the test starts***********\n");
 	printf("***************** pb ***********\n");
@@ -105,5 +126,5 @@ int main()
 }
 
 //to run the tests use the command :
-// gcc tst_sorting_op.c ./../sorting_operations/*.c  ./../ft_utils.c ./../Libft-42/libft.a 
+// gcc tst_sorting_op.c ./../pushswap_utils.c ./../operations/*.c  ./../sorting_algo/sorting_utils/*.c ./../Libft-42/libft.a 
 // but first you need to go to tests directory

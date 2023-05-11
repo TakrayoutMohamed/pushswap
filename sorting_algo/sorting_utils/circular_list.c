@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:54:36 by takra             #+#    #+#             */
-/*   Updated: 2023/05/10 20:49:04 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/11 00:18:53 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	circular_list(t_list **a, t_list **b)
 	fill_indexes_of_a_b(a, b);
 	while (ft_lstsize(*b))
 	{
-		while (1)
+		while (ft_lstsize(*b) > 0)
 		{
 			fill_position_of_b_in_a(a, b);
 			fill_indexes_of_a_b(a, b);
@@ -146,7 +146,7 @@ void	circular_list(t_list **a, t_list **b)
 			// ft_putstr_fd(" and position = ",1);
 			// ft_putnbr_fd((*b)->position ,1);
 			// ft_putstr_fd("\n",1);
-			if ((*b)->index == 0 && (*b)->position == 0)
+			if ( ft_lstsize(*b) > 0 && (*b)->index == 0 && (*b)->position == 0)
 			{
 				pa(a, b);
 				break ;
