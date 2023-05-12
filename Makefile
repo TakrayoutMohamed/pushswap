@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
+#    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
-#    Updated: 2023/05/12 01:35:01 by mohtakra         ###   ########.fr        #
+#    Updated: 2023/05/12 16:20:18 by takra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCSORTING= $(SORTINGPATH)../algo_sorting.c $(SORTINGPATH)circular_list.c $(SORT
 			$(SORTINGPATH)lis_len.c $(SORTINGPATH)lis.c $(SORTINGPATH)non_lis.c\
 			$(SORTINGPATH)sort_circular_list.c $(SORTINGPATH)sort_circular_list_desc.c \
 			$(SORTINGPATH)is_circular_sorted_desc.c $(SORTINGPATH)is_circular_sorted.c\
-			$(SORTINGPATH)sort_b_in_a.c 
+			$(SORTINGPATH)sort_b_in_a.c \
+			$(SORTINGPATH)fill_indexes_of_a.c $(SORTINGPATH)fill_positions_of_a.c
 
 SRCPARSING= $(PARSINGPATH)../is_valid_list.c $(PARSINGPATH)is_int.c \
 			$(PARSINGPATH)lst_duplicate_node.c $(PARSINGPATH)is_only_nbrs.c

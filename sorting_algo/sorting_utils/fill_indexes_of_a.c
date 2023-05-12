@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_sorting.c                                     :+:      :+:    :+:   */
+/*   fill_indexes_of_a.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 14:36:19 by takra             #+#    #+#             */
-/*   Updated: 2023/05/12 16:13:32 by takra            ###   ########.fr       */
+/*   Created: 2023/05/12 16:14:46 by takra             #+#    #+#             */
+/*   Updated: 2023/05/12 16:19:23 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libsortalgo.h"
+#include "./../libsortalgo.h"
 
-/*sort the list (a) in ascending order*/
-void	algo_sorting(t_list **a)
+/*fill all the indexes of list (a) */
+void	fill_indexes_of_a(t_list **a)
 {
-	t_list	*b;
+	t_list	*tmp;
+	int		i;
 
-	b = NULL;
-	if (*a != NULL && !is_sorted_list(*a))
+	i = 0;
+	tmp = *a;
+	if (ft_lstsize(*a) > 0)
 	{
-		if (ft_lstsize(*a) == 3 && !is_circular_sorted(*a))
-			sa(a);
-		if (!is_circular_sorted(*a))
+		while (tmp != NULL)
 		{
-			fill_indexes_of_a(a);
-			get_longest_increasement_lst(a, &b);
+			tmp->index = i++;
+			tmp = tmp->next;
 		}
-		if (ft_lstsize(b))
-			circular_list(a, &b);
-		sort_circular_list(a);
 	}
 }
