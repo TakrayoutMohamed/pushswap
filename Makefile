@@ -6,7 +6,7 @@
 #    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
-#    Updated: 2023/05/12 16:20:18 by takra            ###   ########.fr        #
+#    Updated: 2023/05/12 17:08:37 by takra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,10 @@ SRCSORTING= $(SORTINGPATH)../algo_sorting.c $(SORTINGPATH)circular_list.c $(SORT
 			$(SORTINGPATH)get_longest_increasement_lst.c $(SORTINGPATH)get_right_position.c \
 			$(SORTINGPATH)index_of_list_max.c $(SORTINGPATH)max_array.c  $(SORTINGPATH)is_in_array.c\
 			$(SORTINGPATH)is_list_max.c $(SORTINGPATH)is_list_min.c \
-			$(SORTINGPATH)is_sorted_list.c $(SORTINGPATH)is_sorted_list_desc.c \
+			$(SORTINGPATH)is_sorted_list.c\
 			$(SORTINGPATH)lis_len.c $(SORTINGPATH)lis.c $(SORTINGPATH)non_lis.c\
-			$(SORTINGPATH)sort_circular_list.c $(SORTINGPATH)sort_circular_list_desc.c \
-			$(SORTINGPATH)is_circular_sorted_desc.c $(SORTINGPATH)is_circular_sorted.c\
+			$(SORTINGPATH)sort_circular_list.c \
+			$(SORTINGPATH)is_circular_sorted.c\
 			$(SORTINGPATH)sort_b_in_a.c \
 			$(SORTINGPATH)fill_indexes_of_a.c $(SORTINGPATH)fill_positions_of_a.c
 
