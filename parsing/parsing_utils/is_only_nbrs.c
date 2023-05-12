@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:49:51 by takra             #+#    #+#             */
-/*   Updated: 2023/05/12 00:30:47 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/05/12 21:34:54 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	is_only_nbrs(char **str)
 		{
 			if (!ft_isdigit(str[i][j]) && !ft_is_space(str[i][j]))
 			{
+				if (ft_is_sign(str[i][j]) && ft_isdigit(str[i][j - 1]))
+					return (0);
 				if (ft_is_sign(str[i][j]) && !ft_isdigit(str[i][j + 1]))
 					return (0);
 				if (ft_is_sign(str[i][j]) && ft_is_sign(str[i][j - 1]))
