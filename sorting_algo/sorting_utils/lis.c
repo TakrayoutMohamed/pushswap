@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lis.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:26 by takra             #+#    #+#             */
-/*   Updated: 2023/05/11 18:16:46 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/12 00:32:37 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,6 @@ int	*lis(int array[], int arraylen)
 			if (array[i] > array[j] && lis[i] < lis[j] + 1)
 				lis[i] = lis[j] + 1;
 	}
-	// i = 0;
-	// while (i < arraylen)
-	// 	printf("| %d |",lis[i++]);
-	// exit(0);
 	indexes_of_lis = indexes_of_min_lis(array, lis, arraylen);
 	return (free(array), free(lis), indexes_of_lis);
 }

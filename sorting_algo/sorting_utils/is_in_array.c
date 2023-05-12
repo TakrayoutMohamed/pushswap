@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   is_in_array.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 11:48:38 by takra             #+#    #+#             */
-/*   Updated: 2023/05/12 00:28:40 by mohtakra         ###   ########.fr       */
+/*   Created: 2023/05/12 01:12:54 by mohtakra          #+#    #+#             */
+/*   Updated: 2023/05/12 01:13:01 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./liboperation.h"
+#include "./../libsortalgo.h"
 
-void	ra(t_list **lst)
+/*return true if the value exist in given array 
+that have a lenght of array_len*/
+int	is_in_array(int array[], int array_len, int value)
 {
-	if (ft_lstsize(*lst) > 1)
+	int	i;
+
+	i = 0;
+	while (i < array_len)
 	{
-		rotate_list(lst);
-		ft_putendl_fd("ra", 1);
+		if (array[i] == value)
+			return (1);
+		i++;
 	}
+	return (0);
 }

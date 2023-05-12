@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   circular_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:54:36 by takra             #+#    #+#             */
-/*   Updated: 2023/05/11 00:18:53 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/12 00:55:37 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../libsortalgo.h"
 
+/*return the index of the considered as prior number*/
 static int	get_index_of_prior_node(t_list **lst)
 {
 	int		moves_to_position;
@@ -33,6 +34,7 @@ static int	get_index_of_prior_node(t_list **lst)
 	return (index_of_prior);
 }
 
+/*return the position that the considered as prior number should be in at a*/
 static int	get_position_of_prior_node(t_list **lst)
 {
 	int		moves_to_position;
@@ -54,6 +56,8 @@ static int	get_position_of_prior_node(t_list **lst)
 	return (position_of_prior);
 }
 
+/*fill positions of list (b) with the index that it should be in list (a) 
+to still have circular list*/
 static void	fill_position_of_b_in_a(t_list **a, t_list **b)
 {
 	t_list	*tmp;
@@ -69,6 +73,7 @@ static void	fill_position_of_b_in_a(t_list **a, t_list **b)
 	}
 }
 
+/*fill the list's a , b indexes */
 static void	fill_indexes_of_a_b(t_list **a, t_list **b)
 {
 	t_list	*tmp;
@@ -96,31 +101,6 @@ static void	fill_indexes_of_a_b(t_list **a, t_list **b)
 	}
 }
 
-void	sort_b_in_a(t_list **a, t_list **b, int index, int position)
-{
-	if (position > 0 && index > 0)
-	{
-		if (position + index <= ft_lstsize(*a) / 2)
-			rr(a, b);
-		else
-			rrr(a, b);
-	}
-	else if (position == 0 && index != 0)
-	{
-		if (index > ft_lstsize(*b) / 2)
-			rrb(b);
-		else
-			rb(b);
-	}
-	else if (position != 0 && index == 0)
-	{
-		if (position > ft_lstsize(*a) / 2)
-			rra(a);
-		else
-			ra(a);
-	}
-}
-
 /*add elements of b to a in a circular sort*/
 void	circular_list(t_list **a, t_list **b)
 {
@@ -137,16 +117,7 @@ void	circular_list(t_list **a, t_list **b)
 			fill_indexes_of_a_b(a, b);
 			index_of_prior_node = get_index_of_prior_node(b);
 			position_of_prior_node = get_position_of_prior_node(b);
-			// printf("p index = %d\np position = %d",index_of_prior_node,position_of_prior_node);
-			// exit(0);
-			// ft_putstr_fd("\nnumber = ",1);
-			// ft_putnbr_fd((*b)->content ,1);
-			// ft_putstr_fd(" and index = ",1);
-			// ft_putnbr_fd((*b)->index ,1);
-			// ft_putstr_fd(" and position = ",1);
-			// ft_putnbr_fd((*b)->position ,1);
-			// ft_putstr_fd("\n",1);
-			if ( ft_lstsize(*b) > 0 && (*b)->index == 0 && (*b)->position == 0)
+			if (ft_lstsize(*b) && (*b)->index == 0 && (*b)->position == 0)
 			{
 				pa(a, b);
 				break ;
