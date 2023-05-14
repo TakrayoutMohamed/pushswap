@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_longest_increasement_lst.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:54:13 by takra             #+#    #+#             */
-/*   Updated: 2023/05/12 16:23:00 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/14 22:26:49 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static int	nearest_index_from_top(int array[], int arraylen, t_list *tmp)
 	int		i;
 
 	i = 0;
-	position = ft_lstsize(tmp) + 1;
+	position = 0;
 	while (tmp != NULL && i < ft_lstsize(tmp) / 2)
 	{
 		if (is_in_array(array, arraylen, tmp->index))
 		{
 			position = tmp->position;
-			break ;
+			return (position);
 		}
 		tmp = tmp->next;
 		i++;
@@ -40,7 +40,7 @@ static int	nearest_index_from_bottom(int array[], int arraylen, t_list *tmp)
 	int		i;
 
 	i = 0;
-	position = ft_lstsize(tmp) + 1;
+	position = 0;
 	while (tmp != NULL && i < ft_lstsize(tmp) / 2)
 		tmp = tmp->next;
 	while (tmp != NULL)
@@ -60,18 +60,18 @@ static void	push_non_lis(int non_lis[], int arraylen, t_list **a, t_list **b)
 	int	top_position;
 	int	bottom_position;
 
-	top_position = nearest_index_from_top(non_lis, arraylen, *a);
-	bottom_position = nearest_index_from_bottom(non_lis, arraylen, *a);
-	if (is_in_array(non_lis, arraylen, (*a)->index))
+	if (is_in_array(non_lis, arraylen, (*a)->index) && ft_lstsize(*a) != 3)
 		pb(b, a);
 	else
 	{
-		if (top_position < (ft_lstsize(*a) - bottom_position))
+		top_position = nearest_index_from_top(non_lis, arraylen, *a);
+		bottom_position = nearest_index_from_bottom(non_lis, arraylen, *a);
+		if (ft_lstsize(*a) == 3 && !is_circular_sorted(*a))
+			sa(a);
+		else if (top_position < (ft_lstsize(*a) - bottom_position - 1))
 			ra(a);
 		else
 			rra(a);
-		if (ft_lstsize(*a) == 3 && !is_circular_sorted(*a))
-			sa(a);
 	}
 }
 
