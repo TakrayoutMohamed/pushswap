@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   circular_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:54:36 by takra             #+#    #+#             */
-/*   Updated: 2023/05/15 04:19:49 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/05/15 17:16:41 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	get_index_of_prior_node(t_list **lst, int lstsize_a)
 
 	tmp = *lst;
 	moves_to_position = 2147483647;
-	while (tmp != NULL && tmp->index + 1 <= ft_lstsize(*lst) / 2)
+	while (tmp != NULL && tmp->index + 1 - ft_lstsize(*lst) % 2 <= ft_lstsize(*lst) / 2)
 	{
-		if (tmp->position + 1 <= (lstsize_a / 2))
+		if (tmp->position + 1 - lstsize_a % 2 <= (lstsize_a / 2))
 		{
 			if (tmp->position + tmp->index <= moves_to_position)
 			{
@@ -43,7 +43,7 @@ static int	get_index_of_prior_node(t_list **lst, int lstsize_a)
 	}
 	while (tmp != NULL)
 	{
-		if (tmp->position + 1 <= (lstsize_a / 2))
+		if (tmp->position + 1 - lstsize_a % 2 <= (lstsize_a / 2))
 		{
 			if (tmp->position + ft_lstsize(*lst) - tmp->index <= moves_to_position)
 			{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_b_in_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 00:54:30 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/05/15 04:38:26 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:27:12 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 void	use_rb_rrb(t_list **b, int index)
 {
-	if (index + 1 > ft_lstsize(*b) / 2)
-		rrb(b);
-	else
+	if (index + 1 - ft_lstsize(*b) % 2 < ft_lstsize(*b) / 2)
 		rb(b);
+	else
+		rrb(b);
 }
 
 void	use_ra_rra(t_list **a, int position)
 {
-	if (position + 1 > ft_lstsize(*a) / 2)
-		rra(a);
-	else
+	if (position + 1 - ft_lstsize(*a) % 2 <= ft_lstsize(*a) / 2)
 		ra(a);
+	else
+		rra(a);
 }
 
 
@@ -60,20 +60,20 @@ void	use_rr_rrr(t_list **a, t_list **b, int index, int position)
 			rr(a, b);
 		else if (choose == 1)
 			rrr(a, b);
-		else if (choose == 2)
+		else if (choose == 2 || choose == 3)
 		{
-			if (ft_lstsize(*b) - index > position)
+			// if (ft_lstsize(*b) - index > position)
 				use_ra_rra(a, position);
-			else
-				use_rb_rrb(b, index);
+			// else
+				// use_rb_rrb(b, index);
 		}
-		else if (choose == 3)
-		{
-			if (ft_lstsize(*a) - position < index)
-				use_ra_rra(a, position);
-			else
-				use_rb_rrb(b, index);
-		}
+		// else if (choose == 3)
+		// {
+		// 	if (ft_lstsize(*a) - position > index)
+		// 		use_rb_rrb(b, index);
+		// 	else
+		// 		use_ra_rra(a, position);
+		// }
 	}
 }
 
