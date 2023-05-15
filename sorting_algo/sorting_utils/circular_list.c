@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:54:36 by takra             #+#    #+#             */
-/*   Updated: 2023/05/14 22:44:30 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/05/15 04:19:49 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static int	get_index_of_prior_node(t_list **lst, int lstsize_a)
 
 	tmp = *lst;
 	moves_to_position = 2147483647;
-	while (tmp != NULL && tmp->index <= ft_lstsize(*lst) / 2)
+	while (tmp != NULL && tmp->index + 1 <= ft_lstsize(*lst) / 2)
 	{
-		if (tmp->position <= lstsize_a / 2)
+		if (tmp->position + 1 <= (lstsize_a / 2))
 		{
-			if (tmp->position + tmp->index < moves_to_position)
+			if (tmp->position + tmp->index <= moves_to_position)
 			{
 				moves_to_position = tmp->position + tmp->index;
 				index_of_prior = tmp->index;
@@ -33,7 +33,7 @@ static int	get_index_of_prior_node(t_list **lst, int lstsize_a)
 		}
 		else
 		{
-			if (lstsize_a - tmp->position + tmp->index < moves_to_position)
+			if (lstsize_a - tmp->position + tmp->index <= moves_to_position)
 			{
 				moves_to_position = lstsize_a - tmp->position + tmp->index;
 				index_of_prior = tmp->index;
@@ -43,9 +43,9 @@ static int	get_index_of_prior_node(t_list **lst, int lstsize_a)
 	}
 	while (tmp != NULL)
 	{
-		if (tmp->position <= lstsize_a / 2)
+		if (tmp->position + 1 <= (lstsize_a / 2))
 		{
-			if (tmp->position + ft_lstsize(*lst) - tmp->index < moves_to_position)
+			if (tmp->position + ft_lstsize(*lst) - tmp->index <= moves_to_position)
 			{
 				moves_to_position = tmp->position + ft_lstsize(*lst) - tmp->index;
 				index_of_prior = tmp->index;
@@ -53,7 +53,7 @@ static int	get_index_of_prior_node(t_list **lst, int lstsize_a)
 		}
 		else
 		{
-			if (lstsize_a - tmp->position + ft_lstsize(*lst) - tmp->index < moves_to_position)
+			if (lstsize_a - tmp->position + ft_lstsize(*lst) - tmp->index <= moves_to_position)
 			{
 				moves_to_position = lstsize_a - tmp->position + ft_lstsize(*lst) - tmp->index;
 				index_of_prior = tmp->index;
@@ -134,20 +134,15 @@ void	circular_list(t_list **a, t_list **b)
 
 	fill_position_of_b_in_a(a, b);
 	fill_indexes_of_a_b(a, b);
-	while (ft_lstsize(*b))
+	while (ft_lstsize(*b) > 0)
 	{
-		while (ft_lstsize(*b) > 0)
-		{
-			fill_position_of_b_in_a(a, b);
-			fill_indexes_of_a_b(a, b);
-			index_of_prior_node = get_index_of_prior_node(b, ft_lstsize(*a));
-			position_of_prior_node = get_position_of_prior_node(b, index_of_prior_node);
-			if (ft_lstsize(*b) && (*b)->index == 0 && (*b)->position == 0)
-			{
-				pa(a, b);
-				break ;
-			}
+		fill_position_of_b_in_a(a, b);
+		fill_indexes_of_a_b(a, b);
+		index_of_prior_node = get_index_of_prior_node(b, ft_lstsize(*a));
+		position_of_prior_node = get_position_of_prior_node(b, index_of_prior_node);
+		if ((*b)->index == 0 && (*b)->position == 0)
+			pa(a, b);
+		else
 			sort_b_in_a(a, b, index_of_prior_node, position_of_prior_node);
-		}
 	}
 }
