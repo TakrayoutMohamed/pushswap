@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 00:54:30 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/05/15 04:14:20 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/05/15 04:38:26 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,36 @@ void	use_rr_rrr(t_list **a, t_list **b, int index, int position)
 	{
 		moves = position + index;
 		choose = 0; //rr
-		if (moves > ft_lstsize(*a) - position + ft_lstsize(*b) - index + 3)
+		if (moves >= ft_lstsize(*a) - position + ft_lstsize(*b) - index)
 		{
-			moves = ft_lstsize(*a) - position + ft_lstsize(*b) - index + 3;
+			moves = ft_lstsize(*a) - position + ft_lstsize(*b) - index;
 			choose = 1;//rrr
 		}
-		if (moves > position + ft_lstsize(*b) - index + 2)
+		if (moves > position + ft_lstsize(*b) - index)
 		{
-			moves = position + ft_lstsize(*b) - index + 2;
+			moves = position + ft_lstsize(*b) - index;
 			choose = 2;//rrb ra
 		}
-		if (moves > ft_lstsize(*a) - position + index + 2)
+		if (moves > ft_lstsize(*a) - position + index)
 			// moves = position + ft_lstsize(*b) - index;
 			choose = 3;//rra rb
 		if (choose == 0)
 			rr(a, b);
 		else if (choose == 1)
 			rrr(a, b);
-		else if (choose == 2 || choose == 3)
+		else if (choose == 2)
 		{
-			use_rb_rrb(b, index);
-			use_ra_rra(a, position);
+			if (ft_lstsize(*b) - index > position)
+				use_ra_rra(a, position);
+			else
+				use_rb_rrb(b, index);
+		}
+		else if (choose == 3)
+		{
+			if (ft_lstsize(*a) - position < index)
+				use_ra_rra(a, position);
+			else
+				use_rb_rrb(b, index);
 		}
 	}
 }
