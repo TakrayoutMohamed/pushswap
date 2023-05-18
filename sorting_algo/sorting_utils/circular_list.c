@@ -6,121 +6,11 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:54:36 by takra             #+#    #+#             */
-/*   Updated: 2023/05/18 23:26:01 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/05/19 00:32:30 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../libsortalgo.h"
-
-static int	get_position_of_prior_node(t_list **lst, int index);
-
-/*return the index of the considered as prior number*/
-static int	get_index_of_prior_node(t_list **a, t_list **b,  int lstsize_a)
-{
-	int		moves_to_position;
-	int		index;
-	int		position;
-	t_list	*tmp;
-	int		choose;
-
-	choose = 10;
-	tmp = *b;
-	moves_to_position = 2147483647;
-	// top of b
-	while (tmp != NULL && tmp->index + 1 - ft_lstsize(*b) % 2 <= ft_lstsize(*b) / 2)
-	{
-		// top of a
-		if (tmp->position + 1 - lstsize_a % 2 < lstsize_a / 2)
-		{
-			if (tmp->position > tmp->index)
-			{
-				if (tmp->position < moves_to_position)
-				{
-					moves_to_position = tmp->position;
-					index = tmp->index;
-					choose = 0;
-				}
-			}
-			else if (tmp->index < moves_to_position)
-			{
-				moves_to_position = tmp->index;
-				index = tmp->index;
-				choose = 0;
-			}
-		}
-		// bottom of a
-		else
-		{
-			if (lstsize_a - tmp->position + tmp->index < moves_to_position)
-			{
-				moves_to_position = lstsize_a - tmp->position + tmp->index;
-				index = tmp->index;
-				choose = 2;
-			}
-		}
-		tmp = tmp->next;
-	}
-	// bottom of b
-	while (tmp != NULL)
-	{
-		// top of a
-		if (tmp->position + 1 - lstsize_a % 2 < lstsize_a / 2)
-		{
-			if (tmp->position + ft_lstsize(*b) - tmp->index < moves_to_position)
-			{
-				moves_to_position = tmp->position + ft_lstsize(*b) - tmp->index;
-				index = tmp->index;
-				choose = 2;
-			}
-		}
-		// bottom of a
-		else
-		{
-			// if (lstsize_a - tmp->position + ft_lstsize(*b) - tmp->index < moves_to_position)
-			// {
-			// 	moves_to_position = lstsize_a - tmp->position + ft_lstsize(*b) - tmp->index;
-			// 	index = tmp->index;
-			// 	choose = 1;
-			// }
-			if (lstsize_a - tmp->position  > ft_lstsize(*b) - tmp->index)
-			{
-				if (lstsize_a - tmp->position < moves_to_position)
-				{
-					moves_to_position = lstsize_a - tmp->position;
-					index = tmp->index;
-					choose = 1;
-				}
-			}
-			else if (ft_lstsize(*b) - tmp->index < moves_to_position)
-			{
-				moves_to_position = ft_lstsize(*b) - tmp->index;
-				index = tmp->index;
-				choose = 1;
-			}
-		}
-		tmp = tmp->next;
-	}
-	tmp = NULL;
-	position = get_position_of_prior_node(b, index);
-	sort_b_in_a(a, b, &index, &position, choose);
-	return (index);
-}
-
-/*return the position that the considered as prior number should be in at a*/
-static int	get_position_of_prior_node(t_list **lst, int index)
-{
-	t_list	*tmp;
-
-	tmp = *lst;
-	while (tmp != NULL)
-	{
-		if (tmp->index == index)
-			return (tmp->position);
-		tmp = tmp->next;
-	}
-	tmp = NULL;
-	return (0);
-}
 
 /*fill positions of list (b) with the index that it should be in list (a) 
 to still have circular list*/
@@ -178,7 +68,7 @@ void	circular_list(t_list **a, t_list **b)
 		// ft_putstr_fd("\nooooook\n",1);
 		fill_indexes_of_a_b(a, b);
 		fill_position_of_b_in_a(a, b);
-		index_of_prior_node = get_index_of_prior_node(a, b, ft_lstsize(*a));
+		index_of_prior_node = get_index_priority(a, b);
 		if ((*b)->index == 0 && (*b)->position == 0)
 			pa(a, b);
 	}

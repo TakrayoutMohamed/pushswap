@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:35:07 by takra             #+#    #+#             */
-/*   Updated: 2023/05/18 01:24:32 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/05/19 00:32:01 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int		is_list_min(t_list *lst, int value);
 void	sort_circular_list(t_list	**lst);
 void	get_longest_increasement_lst(t_list **a, t_list **b);
 void	circular_list(t_list **a, t_list **b);
+int		get_index_priority(t_list **a, t_list **b);
+int		get_position_of_index(t_list **lst, int index);
 void	sort_b_in_a(t_list **a, t_list **b, int *index, int *position, int choose);
 int		is_in_array(int array[], int array_len, int value);
 
