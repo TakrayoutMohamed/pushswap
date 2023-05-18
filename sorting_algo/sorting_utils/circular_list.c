@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:54:36 by takra             #+#    #+#             */
-/*   Updated: 2023/05/18 21:20:42 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/05/18 23:26:01 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,24 @@ static int	get_index_of_prior_node(t_list **a, t_list **b,  int lstsize_a)
 		// bottom of a
 		else
 		{
-			if (lstsize_a - tmp->position + ft_lstsize(*b) - tmp->index < moves_to_position)
+			// if (lstsize_a - tmp->position + ft_lstsize(*b) - tmp->index < moves_to_position)
+			// {
+			// 	moves_to_position = lstsize_a - tmp->position + ft_lstsize(*b) - tmp->index;
+			// 	index = tmp->index;
+			// 	choose = 1;
+			// }
+			if (lstsize_a - tmp->position  > ft_lstsize(*b) - tmp->index)
 			{
-				moves_to_position = lstsize_a - tmp->position + ft_lstsize(*b) - tmp->index;
+				if (lstsize_a - tmp->position < moves_to_position)
+				{
+					moves_to_position = lstsize_a - tmp->position;
+					index = tmp->index;
+					choose = 1;
+				}
+			}
+			else if (ft_lstsize(*b) - tmp->index < moves_to_position)
+			{
+				moves_to_position = ft_lstsize(*b) - tmp->index;
 				index = tmp->index;
 				choose = 1;
 			}
