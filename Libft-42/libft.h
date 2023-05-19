@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:13:46 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/05/12 16:55:40 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/19 22:14:42 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_list
 	int				content;
 	int				position;
 	int				index;
+	int				lstsize_a;
+	int				lstsize_b;
 	struct s_list	*next;
 }	t_list;
 

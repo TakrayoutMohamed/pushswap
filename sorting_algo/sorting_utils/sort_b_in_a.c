@@ -6,12 +6,11 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 00:54:30 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/05/18 23:01:16 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/05/19 22:46:45 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../libsortalgo.h"
-
 
 void	use_rb_rrb(t_list **b, int *index)
 {
@@ -34,8 +33,7 @@ void	use_rb_rrb(t_list **b, int *index)
 		}
 		if (*index == ft_lstsize(*b))
 			*index = 0;
-	}
-		
+	}	
 }
 
 void	use_ra_rra(t_list **a, int *position)
@@ -64,7 +62,6 @@ void	use_ra_rra(t_list **a, int *position)
 
 void	use_rr(t_list **a, t_list **b, int *index, int *position)
 {
-
 	while (*index > 0 && *position > 0)
 	{
 		rr(a, b);
@@ -75,7 +72,6 @@ void	use_rr(t_list **a, t_list **b, int *index, int *position)
 
 void	use_rrr(t_list **a, t_list **b, int *index, int *position)
 {
-
 	while (*index < ft_lstsize(*b) && *position < ft_lstsize(*a))
 	{
 		rrr(a, b);
@@ -89,16 +85,19 @@ void	use_rrr(t_list **a, t_list **b, int *index, int *position)
 }
 
 /*conditions of the needed move to use while adding b to a*/
-void	sort_b_in_a(t_list **a, t_list **b, int *index, int *position, int choose)
+void	sort_b_in_a(t_list **a, t_list **b, int *index, int choose)
 {
+	int	position;
+
+	position = get_position_of_index(b, *index);
 	if (choose == 0)
 	{
-		use_rr(a, b, index, position);
+		use_rr(a, b, index, &position);
 	}
 	else if (choose == 1)
 	{
-		use_rrr(a, b, index, position);
+		use_rrr(a, b, index, &position);
 	}
 	use_rb_rrb(b, index);
-	use_ra_rra(a, position);
+	use_ra_rra(a, &position);
 }
