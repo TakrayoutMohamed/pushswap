@@ -6,7 +6,7 @@
 #    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
-#    Updated: 2023/05/19 00:28:42 by mohtakra         ###   ########.fr        #
+#    Updated: 2023/05/19 23:25:41 by mohtakra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@ $(NAME): $(LIBFT) $(OBJ) $(OBJPARSING) $(OBJSORTING)
 		@echo "the file $@ has been created from $<"
 
 $(LIBFT): 
-	make -C ./Libft-42 
+	make -C ./Libft-42
+bonus : 
 
 clean:
 		@$(RM) $(OBJ) $(OBJPARSING) $(OBJSORTING)
