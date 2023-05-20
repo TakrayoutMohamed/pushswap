@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
+#    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
-#    Updated: 2023/05/12 16:56:05 by takra            ###   ########.fr        #
+#    Updated: 2023/05/20 07:51:26 by mohtakra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
 SRC =  ft_atoi.c ft_isdigit.c \
 	ft_strdup.c ft_strjoin.c\
-	ft_strlen.c ft_strlcpy.c\
+	ft_strlen.c ft_strncmp.c ft_strlcpy.c\
 	ft_split.c \
 	ft_putchar_fd.c ft_putstr_fd.c\
 	ft_putendl_fd.c

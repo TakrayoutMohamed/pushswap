@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrb.c                                              :+:      :+:    :+:   */
+/*   pb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 17:47:05 by takra             #+#    #+#             */
-/*   Updated: 2023/05/20 01:33:30 by takra            ###   ########.fr       */
+/*   Created: 2023/04/06 17:47:19 by takra             #+#    #+#             */
+/*   Updated: 2023/05/20 08:01:12 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./liboperation.h"
 
-void	rrb(t_list **lst)
+void	pb_bonus(t_list **lstb, t_list **lsta)
 {
-	if (ft_lstsize(*lst) > 1)
+	t_list	*tmp;
+
+	if (ft_lstsize(*lsta) > 0)
 	{
-		revers_rotate_list(lst);
+		tmp = *lsta;
+		*lsta = (*lsta)->next;
+		ft_lstadd_front(lstb, tmp);
 	}
 }

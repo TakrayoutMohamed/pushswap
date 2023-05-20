@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   liboperation.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 09:31:10 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 16:08:58 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/20 08:05:47 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBOPERATION_H
 # define LIBOPERATION_H
-# include "./../libpushswap.h"
+# include "./../../libpushswap.h"
 
 void	revers_rotate_list(t_list	**lst);
-void	rra(t_list **lst);
-void	rrb(t_list **lst);
-void	rrr(t_list **lsta, t_list **lstb);
+void	rra_bonus(t_list **lst);
+void	rrb_bonus(t_list **lst);
+void	rrr_bonus(t_list **lsta, t_list **lstb);
 void	rotate_list(t_list	**lst);
-void	ra(t_list **lst);
-void	rb(t_list **lst);
-void	rr(t_list **lsta, t_list **lstb);
+void	ra_bonus(t_list **lst);
+void	rb_bonus(t_list **lst);
+void	rr_bonus(t_list **lsta, t_list **lstb);
 void	swap_list(t_list	**lst);
-void	sa(t_list **lst);
-void	sb(t_list **lst);
-void	ss(t_list **lsta, t_list **lstb);
-void	pa(t_list **lsta, t_list **lstb);
-void	pb(t_list **lstb, t_list **lsta);
+void	sa_bonus(t_list **lst);
+void	sb_bonus(t_list **lst);
+void	ss_bonus(t_list **lsta, t_list **lstb);
+void	pa_bonus(t_list **lsta, t_list **lstb);
+void	pb_bonus(t_list **lstb, t_list **lsta);
 
 #endif

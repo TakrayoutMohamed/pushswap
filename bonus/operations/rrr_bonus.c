@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rrr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:47:02 by takra             #+#    #+#             */
-/*   Updated: 2023/05/20 01:33:36 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/20 08:02:40 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./liboperation.h"
 
-void	rrr(t_list **lsta, t_list **lstb)
+void	rrr_bonus(t_list **lsta, t_list **lstb)
 {
 	if (ft_lstsize(*lsta) > 1 && ft_lstsize(*lstb) > 1)
 	{
@@ -20,7 +20,7 @@ void	rrr(t_list **lsta, t_list **lstb)
 		revers_rotate_list(lstb);
 	}
 	else if (ft_lstsize(*lsta) > 1 && ft_lstsize(*lstb) <= 1)
-		rra(lsta);
+		rra_bonus(lsta);
 	else if (ft_lstsize(*lstb) > 1 && ft_lstsize(*lsta) <= 1)
-		rrb(lstb);
+		rrb_bonus(lstb);
 }

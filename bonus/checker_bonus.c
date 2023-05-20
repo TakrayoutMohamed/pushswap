@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 23:36:43 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/05/20 02:23:58 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/20 10:49:38 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	is_null(char *str)
 {
+	while (*str == ' ')
+		str++;
 	if (*str == '\0')
 		return (1);
 	return (0);

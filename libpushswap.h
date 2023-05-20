@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libpushswap.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:11:53 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/04/13 16:04:00 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/20 09:46:46 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "./Libft-42/libft.h"
 # include "./operations/liboperation.h"
 # include "./parsing/libparsing.h"
+# include "./bonus/libchecker_bonus.h"
 # include "./sorting_algo/libsortalgo.h"
 
 void	del(int content);

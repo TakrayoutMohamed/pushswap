@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sb.c                                               :+:      :+:    :+:   */
+/*   ra.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 17:46:56 by takra             #+#    #+#             */
-/*   Updated: 2023/05/20 01:33:46 by takra            ###   ########.fr       */
+/*   Created: 2023/04/07 11:48:38 by takra             #+#    #+#             */
+/*   Updated: 2023/05/20 08:01:20 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./liboperation.h"
 
-void	sb(t_list **lst)
+void	ra_bonus(t_list **lst)
 {
-	swap_list(lst);
+	if (ft_lstsize(*lst) > 1)
+	{
+		rotate_list(lst);
+	}
 }

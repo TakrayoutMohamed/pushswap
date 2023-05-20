@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rb.c                                               :+:      :+:    :+:   */
+/*   rrb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 11:50:44 by takra             #+#    #+#             */
-/*   Updated: 2023/05/20 01:33:09 by takra            ###   ########.fr       */
+/*   Created: 2023/04/06 17:47:05 by takra             #+#    #+#             */
+/*   Updated: 2023/05/20 08:02:19 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./liboperation.h"
 
-void	rb(t_list **lst)
+void	rrb_bonus(t_list **lst)
 {
 	if (ft_lstsize(*lst) > 1)
 	{
-		rotate_list(lst);
+		revers_rotate_list(lst);
 	}
 }
