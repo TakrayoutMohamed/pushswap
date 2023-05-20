@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ra.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 11:48:38 by takra             #+#    #+#             */
-/*   Updated: 2023/05/12 00:28:40 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/05/20 01:33:03 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@ void	ra(t_list **lst)
 	if (ft_lstsize(*lst) > 1)
 	{
 		rotate_list(lst);
-		ft_putendl_fd("ra", 1);
 	}
 }

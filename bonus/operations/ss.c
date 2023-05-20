@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:46:47 by takra             #+#    #+#             */
-/*   Updated: 2023/04/13 15:50:36 by takra            ###   ########.fr       */
+/*   Updated: 2023/05/20 01:33:52 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ss(t_list **lsta, t_list **lstb)
 	{
 		swap_list(lsta);
 		swap_list(lstb);
-		ft_putendl_fd("ss", 1);
 	}
 	else if (ft_lstsize(*lsta) > 1 && ft_lstsize(*lstb) <= 1)
 		sa(lsta);
